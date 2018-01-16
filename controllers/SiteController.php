@@ -2,12 +2,12 @@
 
 namespace app\controllers;
 
+use app\Me;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
-use app\models\LoginForm;
 use app\models\ContactForm;
 
 class SiteController extends Controller
@@ -33,6 +33,7 @@ class SiteController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'logout' => ['post'],
+                    'login' => ['post'],
                 ],
             ],
         ];
@@ -61,7 +62,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        return $this->renderPartial('login');
     }
 
     /**
@@ -75,13 +76,7 @@ class SiteController extends Controller
             return $this->goHome();
         }
 
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        }
-        return $this->render('login', [
-            'model' => $model,
-        ]);
+        var_dump(Me::Request('username')); die;
     }
 
     /**

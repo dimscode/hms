@@ -1,0 +1,109 @@
+@media only screen and (min-width:576px){
+    .container {
+        padding: 30px;
+    }
+    .form-box {
+        vertical-align: middle;
+        display: inline-block;
+        margin: 45px auto;
+    }
+    .form-box:nth-child(1) {
+        float: right;
+    }
+    .text-lg{
+        font-size: 62px;
+    }
+    .text-md{
+        font-size: 26px;
+    }
+
+}
+
+
+
+/*Smartphone*/
+@media (max-width:575px){
+    .container {
+        padding: 0 30px;
+    }
+    .form-box {
+        margin: 15px auto;
+    }
+    .text-lg{
+        font-size: 42px;
+        margin-bottom: 15px;
+    }
+    .text-md{
+        font-size: 16px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.bg {
+    background: #f9f9f9;
+    color: #a7a7a7;
+}
+
+.btn-gray {
+    background-color: #bababa;
+    color: #f9f9f9;
+}
+.btn-gray:hover {
+    background-color: #a8a8a8;
+    transition: all .4s ease-in-out;
+}
+
+footer {
+    padding-top: 45px;
+    text-transform: capitalize;
+}
+footer a {
+    color: #b9b9b9;
+}
+footer p {
+    text-align: center;
+}
+
+footer a:hover {
+    color: #a7a7a7;
+    transition: all .4s ease-in-out;
+}
+.social-media p {
+    margin-bottom: 0;
+}
+ul.social-media {
+    padding-left: 0;
+    margin: 15px auto;
+    list-style: none;
+    text-align: center;
+    width: 310px;
+    border-bottom: 3px solid #efefef;
+}
+ul.social-media:after {
+    content: "";
+    top: 3px;
+    width: 50%;
+    position: relative;
+    display: block;
+    border-bottom: 3px solid #a7a7a7;
+}
+ul.social-media > li{
+    margin: 10px 15px;
+    display: inline-block;
+}
+.heart{
+    color: #a71100;
+}
