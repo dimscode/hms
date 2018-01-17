@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\Me;
+use app\models\User;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -12,6 +13,9 @@ use app\models\ContactForm;
 
 class SiteController extends Controller
 {
+    private $_users = null;
+    private $username = null;
+    private $rememberMe;
     /**
      * @inheritdoc
      */
@@ -33,7 +37,7 @@ class SiteController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'logout' => ['post'],
-                    'login' => ['post'],
+                    'login' => ['post','get'],
                 ],
             ],
         ];
@@ -62,6 +66,9 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         return $this->renderPartial('login');
     }
 
@@ -75,8 +82,27 @@ class SiteController extends Controller
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
+        $login = $this->login(Me::Request('username'), Me::Request('password'));
+        if ($login){
+            return $this->goBack();
+        }else{
+            return $this->redirect('/');
+        }
+    }
 
-        var_dump(Me::Request('username')); die;
+    private function getUser(){
+        if ($this->_users === null){
+            $this->_users = User::findByUsername($this->username);
+        }
+        return $this->_users;
+    }
+    private function login($user, $pass){
+        if ((!empty($user)) && (!empty($pass))) {
+            $this->username = $user;
+            return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
+        }
+
+        return false;
     }
 
     /**
@@ -87,8 +113,7 @@ class SiteController extends Controller
     public function actionLogout()
     {
         Yii::$app->user->logout();
-
-        return $this->goHome();
+        return $this->redirect('/');
     }
 
     /**
