@@ -1,3 +1,12 @@
+<?php
+    $errors = $model->getErrors();
+
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,15 +31,23 @@
             </div>
             <div class="col-md-6">
                 <div class="form-box">
-                    <form class="form-group" action="<?= \yii\helpers\Url::toRoute('site/login')?>" method="POST">
+                    <?php if(isset($errors['incorrect'])) : ?>
+                        <div class="alert alert-danger alert-dismissable">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>Error!</strong> <?= $errors['incorrect'][0]?>.
+                        </div>
+                    <?php endif ?>
+                    <form class="form-group" action="<?= \yii\helpers\Url::toRoute('/')?>" method="POST">
                         <div class="form-group">
                             <label>Username</label>
-                            <input class="form-control form-control-sm" name="username" required>
+                            <input class="form-control form-control-sm" name="User[username]">
+                            <span class="text-danger"><?= (isset($errors['username'])) ? $errors['username'][0] : '' ?></span>
                         </div>
                         <?= \app\Me::TokenSubmission() ?>
                         <div class="form-group">
                             <label>Password</label>
-                            <input class="form-control form-control-sm" name="password" type="password" required>
+                            <input class="form-control form-control-sm" name="User[password]" type="password">
+                            <span class="text-danger"></span> <?= (isset($errors['password'])) ? $errors['password'][0]: '' ?>
                         </div>
                         <div class="form-group">
                             <input type="submit" class="btn btn-gray btn-block" value="Login">

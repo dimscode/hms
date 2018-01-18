@@ -21,6 +21,7 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web/gentelella/';
     public $css = [
         'vendors/bootstrap/dist/css/bootstrap.min.css',
+        '../wizard/assets/css/gsdk-bootstrap-wizard.css',
         'vendors/font-awesome/css/font-awesome.min.css',
         'vendors/nprogress/nprogress.css',
         'vendors/iCheck/skins/flat/green.css',
@@ -28,7 +29,7 @@ class AppAsset extends AssetBundle
         'vendors/jqvmap/dist/jqvmap.min.css',
         'vendors/bootstrap-daterangepicker/daterangepicker.css',
         'build/css/custom.css',
-        '../bootzard/assets/css/form-elements.css',
+
     ];
     public $js = [
         'vendors/jquery/dist/jquery.min.js',
@@ -36,9 +37,9 @@ class AppAsset extends AssetBundle
         'vendors/moment/moment.js',
         'vendors/bootstrap-daterangepicker/daterangepicker.js',
         'build/js/custom.js',
-        '../bootzard/assets/js/jquery.backstretch.js',
-        '../bootzard/assets/js/scripts.js',
-
+        '../wizard/assets/js/jquery.bootstrap.wizard.js',
+        '../wizard/assets/js/gsdk-bootstrap-wizard.js',
+        '../wizard/assets/js/jquery.validate.min.js',
     ];
     public $depends = [
 

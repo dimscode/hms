@@ -91,7 +91,7 @@
                             <li class="">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                     <img src="http://reels.syntheticpictures.com/img/directors/blank-avatar.png" alt="">
-                                    <?= Yii::$app->user->getIdentity()->name_user ?>
+                                    <?= Yii::$app->user->getIdentity()->name_user ?> <strong>[<?= Yii::$app->user->getIdentity()->managements->name?>]</strong>
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-usermenu pull-right">

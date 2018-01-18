@@ -11,7 +11,12 @@ class Me
         return "<input id='form-token' type='hidden' name='".Yii::$app->request->csrfParam."'
            value='".Yii::$app->request->csrfToken."'/>";
     }
-
+    public static function convertDateSQL($date)
+    {
+        $d=strtotime($date);
+        $dt = date("Y-m-d", $d);
+        return $dt;
+    }
     public static function Request($name = null){
         if (!$name){
             return Yii::$app->request->post();
